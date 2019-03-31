@@ -31,18 +31,16 @@ public class Eurovision {
      * @throws IOException it is raised when no file is found
      */
     void load(String file, String year) throws IOException {
-
         Path filePath = Paths.get(file);
-        Path linkPath = Paths.get(".", "src", "main", "resources", year);
-        Path resourcesPath = Paths.get(".", "src", "main", "resources");
+        Path linkPath = Paths.get(".", "data", year);
+        Path dataPath = Paths.get(".", "data");
 
-        if (!Files.exists(resourcesPath)) {
-            Files.createDirectory(resourcesPath);
+        if (!Files.exists(dataPath)) {
+            Files.createDirectory(dataPath);
         }
 
         Files.deleteIfExists(linkPath);
         Files.createLink(linkPath, filePath); //create hard link
-
     }
 
     /**
@@ -145,7 +143,7 @@ public class Eurovision {
      */
     void results(String votedFor, String year) throws IOException {
 
-        Path file = Paths.get(".", "src", "main", "resources", year);
+        Path file = Paths.get(".", "data", year);
 
         //update vote
         HashMap<String, Integer> voteMap = countVotes(votedFor, file);

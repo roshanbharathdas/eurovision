@@ -25,8 +25,8 @@ public class EurovisionTest {
     final String EMPTY_FILE = "./src/test/resources/emptyFile";
     final String NON_EXISTENT_FILE = "./src/test/resources/nonExistantFile";
 
-    final String LOADED_FILE_PATH = "./src/main/resources/" + YEAR;
-    Path file = Paths.get(".", "src", "main", "resources", YEAR);
+    final String LOADED_FILE_PATH = "./data/" + YEAR;
+    Path file = Paths.get(".", "data", YEAR);
 
     final String VOTED_FOR_BELGIUM = "Belgium";
 
@@ -99,7 +99,7 @@ public class EurovisionTest {
 
         classUnderTest.load(FILE, YEAR);
 
-        Path wrong_file = Paths.get(".", "src", "main", "resources", UNKNOWN_YEAR);
+        Path wrong_file = Paths.get(".", "data", UNKNOWN_YEAR);
 
         classUnderTest.countVotes(VOTED_FOR_BELGIUM, wrong_file);
 
